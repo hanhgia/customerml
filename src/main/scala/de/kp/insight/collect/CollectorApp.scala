@@ -98,7 +98,7 @@ object CollectorApp extends CollectorService {
        
       }
     
-      case msg:PrepareFailed => {
+      case msg:CollectFailed => {
     
         val end = new java.util.Date().getTime           
         println("Collector failed at " + end)
@@ -107,7 +107,7 @@ object CollectorApp extends CollectorService {
       
       }
     
-      case msg:PrepareFinished => {
+      case msg:CollectFinished => {
     
         val model = msg.data(Names.REQ_MODEL)
         BUF += model
