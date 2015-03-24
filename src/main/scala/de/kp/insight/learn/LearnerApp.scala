@@ -54,7 +54,7 @@ object LearnerApp extends LearnerService("Learner") {
       val actor = system.actorOf(Props(new Handler(ctx,req_params)))   
       inbox.watch(actor)
     
-      actor ! StartLearn
+      actor ! StartLearn()
 
       val timeout = DurationInt(30).minute
     
@@ -105,7 +105,7 @@ object LearnerApp extends LearnerService("Learner") {
           
         }
         
-        builder ! StartLearn
+        builder ! StartLearn()
        
       }
     

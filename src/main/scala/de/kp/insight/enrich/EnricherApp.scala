@@ -67,7 +67,7 @@ object EnricherApp extends EnricherService("Enricher") {
       val actor = system.actorOf(Props(new Handler(ctx,req_params)))   
       inbox.watch(actor)
     
-      actor ! StartLearn
+      actor ! StartLearn()
 
       val timeout = DurationInt(30).minute
     
@@ -122,7 +122,7 @@ object EnricherApp extends EnricherService("Enricher") {
           
         }
         
-        builder ! StartLearn
+        builder ! StartLearn()
        
       }
     

@@ -73,7 +73,7 @@ object PreparerApp extends PreparerService("Preparer") {
       val actor = system.actorOf(Props(new Handler(ctx,req_params,orders)))   
       inbox.watch(actor)
     
-      actor ! StartPrepare
+      actor ! StartPrepare()
 
       val timeout = DurationInt(30).minute
     
@@ -134,7 +134,7 @@ object PreparerApp extends PreparerService("Preparer") {
           
         }
         
-        preparer ! StartPrepare
+        preparer ! StartPrepare()
        
       }
     

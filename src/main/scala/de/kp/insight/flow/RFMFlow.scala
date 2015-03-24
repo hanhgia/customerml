@@ -78,7 +78,7 @@ object RFMFlow extends SparkService {
       val actor = system.actorOf(Props(new Handler(ctx,params,orders)))   
       inbox.watch(actor)
     
-      actor ! StartPrepare
+      actor ! StartPrepare()
 
       val timeout = DurationInt(30).minute
     
@@ -109,7 +109,7 @@ object RFMFlow extends SparkService {
         registerPrepare(params)        
         val preparer = context.actorOf(Props(new RFMPreparer(ctx,params,orders))) 
         
-        preparer ! StartPrepare
+        preparer ! StartPrepare()
        
       }
     
@@ -130,7 +130,7 @@ object RFMFlow extends SparkService {
         registerLoad(params)
         val loader = context.actorOf(Props(new RFMLoader(ctx,params))) 
         
-        loader ! StartLoad
+        loader ! StartLoad()
         
       }
     

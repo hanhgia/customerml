@@ -63,7 +63,7 @@ object LoaderApp extends LoaderService("Loader") {
       val actor = system.actorOf(Props(new Handler(ctx,req_params)))   
       inbox.watch(actor)
     
-      actor ! StartLoad
+      actor ! StartLoad()
 
       val timeout = DurationInt(30).minute
     
@@ -130,7 +130,7 @@ object LoaderApp extends LoaderService("Loader") {
           
         }
         
-        loader ! StartLoad
+        loader ! StartLoad()
        
       }
     

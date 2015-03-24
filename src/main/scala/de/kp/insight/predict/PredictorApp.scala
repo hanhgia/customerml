@@ -46,7 +46,7 @@ object PredictorApp extends PredictorService("Predictor") {
       val actor = system.actorOf(Props(new Handler(ctx,req_params)))   
       inbox.watch(actor)
     
-      actor ! StartPredict
+      actor ! StartPredict()
 
       val timeout = DurationInt(30).minute
     
@@ -85,7 +85,7 @@ object PredictorApp extends PredictorService("Predictor") {
           
         }
         
-        loader ! StartPredict
+        loader ! StartPredict()
        
       }
     

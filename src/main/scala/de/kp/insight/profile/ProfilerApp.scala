@@ -46,7 +46,7 @@ object ProfilerApp extends ProfilerService("Profiler") {
       val actor = system.actorOf(Props(new Handler(ctx,req_params)))   
       inbox.watch(actor)
     
-      actor ! StartProfile
+      actor ! StartProfile()
 
       val timeout = DurationInt(30).minute
     
@@ -83,7 +83,7 @@ object ProfilerApp extends ProfilerService("Profiler") {
           
         }
         
-        loader ! StartProfile
+        loader ! StartProfile()
        
       }
     

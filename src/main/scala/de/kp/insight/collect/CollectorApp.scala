@@ -44,7 +44,7 @@ object CollectorApp extends CollectorService {
       val actor = system.actorOf(Props(new Handler(ctx,req_params)))   
       inbox.watch(actor)
     
-      actor ! StartCollect
+      actor ! StartCollect()
 
       val timeout = DurationInt(30).minute
     
@@ -86,7 +86,7 @@ object CollectorApp extends CollectorService {
         val csm_params = params ++ Map(Names.REQ_NAME -> "CSM")
         
         val csm_collector = context.actorOf(Props(new CSMCollector(ctx,csm_params))) 
-        csm_collector ! StartCollect
+        csm_collector ! StartCollect()
         
         /*
          * Start PRDCollector
@@ -94,7 +94,7 @@ object CollectorApp extends CollectorService {
         val prd_params = params ++ Map(Names.REQ_NAME -> "PRD")
         
         val prd_collector = context.actorOf(Props(new PRDCollector(ctx,prd_params))) 
-        prd_collector ! StartCollect
+        prd_collector ! StartCollect()
        
       }
     
@@ -129,7 +129,7 @@ object CollectorApp extends CollectorService {
           val ord_params = params ++ Map(Names.REQ_NAME -> "ORD")
         
           val ord_collector = context.actorOf(Props(new CSMCollector(ctx,ord_params))) 
-          ord_collector ! StartCollect
+          ord_collector ! StartCollect()
           
         }
         

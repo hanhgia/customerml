@@ -44,7 +44,7 @@ object CollectorJob extends CollectorService {
       val actor = system.actorOf(Props(new Handler(ctx,req_params)))   
       inbox.watch(actor)
     
-      actor ! StartCollect
+      actor ! StartCollect()
 
       val timeout = DurationInt(30).minute
     
@@ -85,7 +85,7 @@ object CollectorJob extends CollectorService {
           
         }
 
-        collector ! StartCollect
+        collector ! StartCollect()
        
       }
     
