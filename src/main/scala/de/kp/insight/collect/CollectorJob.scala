@@ -89,7 +89,7 @@ object CollectorJob extends CollectorService {
        
       }
     
-      case msg:PrepareFailed => {
+      case msg:CollectFailed => {
     
         val end = new java.util.Date().getTime           
         println("Collector failed at " + end)
@@ -98,7 +98,7 @@ object CollectorJob extends CollectorService {
       
       }
     
-      case msg:PrepareFinished => {
+      case msg:CollectFinished => {
     
         val end = new java.util.Date().getTime           
         println("Collector finished at " + end)
